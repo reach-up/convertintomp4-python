@@ -722,7 +722,7 @@ class Client:
         return PdfOperationResult.from_dict(data)
 
     # =========================================================================
-    # Presigned Upload Methods (Direct-to-R2)
+    # Presigned Upload Methods (direct to storage)
     # =========================================================================
 
     def get_presigned_upload_url(
@@ -731,7 +731,7 @@ class Client:
         content_type: str = "application/octet-stream",
         file_size: Optional[int] = None,
     ) -> Dict[str, Any]:
-        """Get a presigned URL for uploading a file directly to R2 storage.
+        """Get a presigned URL for uploading a file directly to storage.
 
         This bypasses the API server for large file uploads.
 
@@ -746,7 +746,7 @@ class Client:
         Example::
 
             presign = client.get_presigned_upload_url("video.mp4", "video/mp4")
-            # Upload directly to R2
+            # Upload directly to storage
             requests.put(presign["uploadUrl"], data=file_data)
             # Start conversion
             result = client.convert_from_storage(presign["storageKey"], "mp4", "webm")
@@ -768,10 +768,10 @@ class Client:
         tool_operation: Optional[str] = None,
         **options: Any,
     ) -> Dict[str, Any]:
-        """Start a conversion from a file already uploaded to R2 storage.
+        """Start a conversion from a file already uploaded to storage.
 
         Args:
-            storage_key: The R2 storage key from get_presigned_upload_url().
+            storage_key: The storage key from get_presigned_upload_url().
             source_format: Source file format (e.g., "mp4").
             target_format: Target conversion format (e.g., "webm").
             original_name: Optional original filename.
@@ -801,7 +801,7 @@ class Client:
         target_format: str,
         **options: Any,
     ) -> Dict[str, Any]:
-        """Upload a file directly to R2 and start conversion in one step.
+        """Upload a file directly to storage and start conversion in one step.
 
         Combines get_presigned_upload_url + PUT upload + convert_from_storage.
 
@@ -818,7 +818,7 @@ class Client:
         # Get presigned URL
         presign = self.get_presigned_upload_url(filename, content_type)
 
-        # Upload directly to R2
+        # Upload directly to storage
         if hasattr(file_data, "read"):
             data = file_data.read()
         else:

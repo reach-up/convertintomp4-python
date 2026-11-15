@@ -1,0 +1,10 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "ConvertIntoMP4 Python SDK",
+  "description": "Official Python SDK for the ConvertIntoMP4 file conversion API: convert video, audio, image, document and PDF files, run multi-step jobs and receive signed webhooks.",
+  "excludeFolders": [
+    "src",
+    "tests",
+    "convertintomp4"
+  ]
+}
