@@ -3,6 +3,7 @@
 Official Python SDK for the [ConvertIntoMP4](https://convertintomp4.com) file conversion API.
 
 - **API docs:** [convertintomp4.com/api-docs](https://convertintomp4.com/api-docs)
+- **Examples:** [reach-up/convertintomp4-api-examples](https://github.com/reach-up/convertintomp4-api-examples) (Node.js, Python, Go, .NET)
 - **Developers:** [convertintomp4.com/developers](https://convertintomp4.com/developers)
 
 ## Installation
