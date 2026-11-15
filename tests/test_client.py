@@ -497,7 +497,7 @@ class TestPdfOperations:
     @patch.object(requests.Session, "request")
     def test_pdf_merge(self, mock_request):
         mock_request.return_value = _mock_response(200, {
-            "data": {"url": "https://r2.example.com/merged.pdf", "file_size": 1024},
+            "data": {"url": "https://files.example.com/merged.pdf", "file_size": 1024},
         })
 
         client = Client(api_key="test-key")
@@ -505,12 +505,12 @@ class TestPdfOperations:
 
         args, kwargs = mock_request.call_args
         assert kwargs["json"]["files"] == ["https://a.pdf", "https://b.pdf"]
-        assert result.url == "https://r2.example.com/merged.pdf"
+        assert result.url == "https://files.example.com/merged.pdf"
 
     @patch.object(requests.Session, "request")
     def test_pdf_compress(self, mock_request):
         mock_request.return_value = _mock_response(200, {
-            "data": {"url": "https://r2.example.com/compressed.pdf", "file_size": 512},
+            "data": {"url": "https://files.example.com/compressed.pdf", "file_size": 512},
         })
 
         client = Client(api_key="test-key")
@@ -523,7 +523,7 @@ class TestPdfOperations:
     @patch.object(requests.Session, "request")
     def test_pdf_encrypt(self, mock_request):
         mock_request.return_value = _mock_response(200, {
-            "data": {"url": "https://r2.example.com/encrypted.pdf", "file_size": 2048},
+            "data": {"url": "https://files.example.com/encrypted.pdf", "file_size": 2048},
         })
 
         client = Client(api_key="test-key")
